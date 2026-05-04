@@ -1,0 +1,578 @@
+{
+  "moodle-10": [
+    {
+      "id": "local-1775125253570-6n4m",
+      "type": "enrollment",
+      "title": "Welcome to IIT! 🎉",
+      "body": "You now have access to \"IIT\". Start your learning journey today!",
+      "data": {
+        "courseId": "11"
+      },
+      "read": false,
+      "createdAt": "2026-04-02T10:20:53.570Z",
+      "source": "local"
+    },
+    {
+      "id": "local-1775117564601-stug",
+      "type": "enrollment",
+      "title": "🎉 Enrolled successfully!",
+      "body": "You've been enrolled in \"React\". Start learning now!",
+      "data": {
+        "courseId": "8"
+      },
+      "read": false,
+      "createdAt": "2026-04-02T08:12:44.601Z",
+      "source": "local"
+    },
+    {
+      "id": "local-1775117306448-jhts",
+      "type": "enrollment",
+      "title": "🎉 Enrolled successfully!",
+      "body": "You've been enrolled in \"new course\". Start learning now!",
+      "data": {
+        "courseId": "9"
+      },
+      "read": false,
+      "createdAt": "2026-04-02T08:08:26.448Z",
+      "source": "local"
+    },
+    {
+      "id": "local-1775117189205-xew6",
+      "type": "enrollment",
+      "title": "🎉 Enrolled successfully!",
+      "body": "You've been enrolled in \"UPSC-CDS\". Start learning now!",
+      "data": {
+        "courseId": "5"
+      },
+      "read": false,
+      "createdAt": "2026-04-02T08:06:29.205Z",
+      "source": "local"
+    },
+    {
+      "id": "local-1775115142421-v3v5",
+      "type": "enrollment",
+      "title": "🎉 Enrolled successfully!",
+      "body": "You've been enrolled in \"CAPF-AC\". Start learning now!",
+      "data": {
+        "courseId": "4"
+      },
+      "read": true,
+      "createdAt": "2026-04-02T07:32:22.421Z",
+      "source": "local"
+    },
+    {
+      "id": "local-1775114639257-14u3",
+      "type": "enrollment",
+      "title": "🎉 Enrolled successfully!",
+      "body": "You've been enrolled in \"NIMCET\". Start learning now!",
+      "data": {
+        "courseId": "6"
+      },
+      "read": true,
+      "createdAt": "2026-04-02T07:23:59.257Z",
+      "source": "local"
+    },
+    {
+      "id": "local-1774990734583-gyu2",
+      "type": "enrollment",
+      "title": "🎉 Enrolled successfully!",
+      "body": "You've been enrolled in \"demo 2\". Start learning now!",
+      "data": {
+        "courseId": "3"
+      },
+      "read": true,
+      "createdAt": "2026-03-31T20:58:54.583Z",
+      "source": "local"
+    },
+    {
+      "id": "local-1774977279405-zyxr",
+      "type": "enrollment",
+      "title": "🎉 Enrolled successfully!",
+      "body": "You've been enrolled in \"AI Udaan 2026\". Start learning now!",
+      "data": {
+        "courseId": "7"
+      },
+      "read": true,
+      "createdAt": "2026-03-31T17:14:39.405Z",
+      "source": "local"
+    }
+  ],
+  "moodle-11": [
+    {
+      "id": "local-1774991663427-loc9",
+      "type": "enrollment",
+      "title": "🎉 Enrolled successfully!",
+      "body": "You've been enrolled in \"AI Udaan 2026\". Start learning now!",
+      "data": {
+        "courseId": "7"
+      },
+      "read": false,
+      "createdAt": "2026-03-31T21:14:23.427Z",
+      "source": "local"
+    },
+    {
+      "id": "local-1774991635181-yhhs",
+      "type": "enrollment",
+      "title": "🎉 Enrolled successfully!",
+      "body": "You've been enrolled in \"demo 2\". Start learning now!",
+      "data": {
+        "courseId": "3"
+      },
+      "read": false,
+      "createdAt": "2026-03-31T21:13:55.181Z",
+      "source": "local"
+    }
+  ],
+  "moodle-12": [
+    {
+      "id": "local-1775113248344-07d4",
+      "type": "enrollment",
+      "title": "🎉 Enrolled successfully!",
+      "body": "You've been enrolled in \"NIMCET\". Start learning now!",
+      "data": {
+        "courseId": "6"
+      },
+      "read": false,
+      "createdAt": "2026-04-02T07:00:48.344Z",
+      "source": "local"
+    },
+    {
+      "id": "local-1774992969040-tnuu",
+      "type": "enrollment",
+      "title": "🎉 Enrolled successfully!",
+      "body": "You've been enrolled in \"CAPF-AC\". Start learning now!",
+      "data": {
+        "courseId": "4"
+      },
+      "read": false,
+      "createdAt": "2026-03-31T21:36:09.040Z",
+      "source": "local"
+    },
+    {
+      "id": "local-1774992490746-whm4",
+      "type": "enrollment",
+      "title": "🎉 Enrolled successfully!",
+      "body": "You've been enrolled in \"new course\". Start learning now!",
+      "data": {
+        "courseId": "9"
+      },
+      "read": false,
+      "createdAt": "2026-03-31T21:28:10.746Z",
+      "source": "local"
+    },
+    {
+      "id": "local-1774992205772-50w1",
+      "type": "enrollment",
+      "title": "🎉 Enrolled successfully!",
+      "body": "You've been enrolled in \"AI Udaan 2026\". Start learning now!",
+      "data": {
+        "courseId": "7"
+      },
+      "read": true,
+      "createdAt": "2026-03-31T21:23:25.772Z",
+      "source": "local"
+    },
+    {
+      "id": "local-1774991850521-nrcb",
+      "type": "enrollment",
+      "title": "🎉 Enrolled successfully!",
+      "body": "You've been enrolled in \"demo 2\". Start learning now!",
+      "data": {
+        "courseId": "3"
+      },
+      "read": true,
+      "createdAt": "2026-03-31T21:17:30.521Z",
+      "source": "local"
+    }
+  ],
+  "moodle-13": [
+    {
+      "id": "local-1775116350443-bp66",
+      "type": "enrollment",
+      "title": "🎉 Enrolled successfully!",
+      "body": "You've been enrolled in \"UPSC-CDS\". Start learning now!",
+      "data": {
+        "courseId": "5"
+      },
+      "read": false,
+      "createdAt": "2026-04-02T07:52:30.443Z",
+      "source": "local"
+    },
+    {
+      "id": "local-1775115782046-k6a7",
+      "type": "enrollment",
+      "title": "🎉 Enrolled successfully!",
+      "body": "You've been enrolled in \"NIMCET\". Start learning now!",
+      "data": {
+        "courseId": "6"
+      },
+      "read": false,
+      "createdAt": "2026-04-02T07:43:02.046Z",
+      "source": "local"
+    },
+    {
+      "id": "local-1775115498773-kxsr",
+      "type": "enrollment",
+      "title": "🎉 Enrolled successfully!",
+      "body": "You've been enrolled in \"demo 2\". Start learning now!",
+      "data": {
+        "courseId": "3"
+      },
+      "read": false,
+      "createdAt": "2026-04-02T07:38:18.773Z",
+      "source": "local"
+    },
+    {
+      "id": "local-1775114545632-6fc3",
+      "type": "enrollment",
+      "title": "🎉 Enrolled successfully!",
+      "body": "You've been enrolled in \"CAPF-AC\". Start learning now!",
+      "data": {
+        "courseId": "4"
+      },
+      "read": false,
+      "createdAt": "2026-04-02T07:22:25.632Z",
+      "source": "local"
+    },
+    {
+      "id": "local-1775114183197-165i",
+      "type": "enrollment",
+      "title": "🎉 Enrolled successfully!",
+      "body": "You've been enrolled in \"AI Udaan 2026\". Start learning now!",
+      "data": {
+        "courseId": "7"
+      },
+      "read": false,
+      "createdAt": "2026-04-02T07:16:23.197Z",
+      "source": "local"
+    }
+  ],
+  "moodle-14": [
+    {
+      "id": "local-1775121132491-q75p",
+      "type": "enrollment",
+      "title": "🎉 Enrolled successfully!",
+      "body": "You've been enrolled in \"UPSC-CDS\". Start learning now!",
+      "data": {
+        "courseId": "5"
+      },
+      "read": false,
+      "createdAt": "2026-04-02T09:12:12.491Z",
+      "source": "local"
+    },
+    {
+      "id": "local-1775120851105-tn70",
+      "type": "enrollment",
+      "title": "🎉 Enrolled successfully!",
+      "body": "You've been enrolled in \"AI Udaan 2026\". Start learning now!",
+      "data": {
+        "courseId": "7"
+      },
+      "read": false,
+      "createdAt": "2026-04-02T09:07:31.105Z",
+      "source": "local"
+    },
+    {
+      "id": "local-1775120790167-z2kb",
+      "type": "enrollment",
+      "title": "🎉 Enrolled successfully!",
+      "body": "You've been enrolled in \"demo 2\". Start learning now!",
+      "data": {
+        "courseId": "3"
+      },
+      "read": false,
+      "createdAt": "2026-04-02T09:06:30.167Z",
+      "source": "local"
+    },
+    {
+      "id": "local-1775120733944-uput",
+      "type": "enrollment",
+      "title": "🎉 Enrolled successfully!",
+      "body": "You've been enrolled in \"NIMCET\". Start learning now!",
+      "data": {
+        "courseId": "6"
+      },
+      "read": false,
+      "createdAt": "2026-04-02T09:05:33.944Z",
+      "source": "local"
+    }
+  ],
+  "moodle-15": [
+    {
+      "id": "local-1775125162023-k7x5",
+      "type": "enrollment",
+      "title": "Welcome to demo 2! 🎉",
+      "body": "You now have access to \"demo 2\". Start your learning journey today!",
+      "data": {
+        "courseId": "3"
+      },
+      "read": false,
+      "createdAt": "2026-04-02T10:19:22.024Z",
+      "source": "local"
+    },
+    {
+      "id": "local-1775124955274-yk8j",
+      "type": "enrollment",
+      "title": "Welcome to CAPF-AC! 🎉",
+      "body": "You now have access to \"CAPF-AC\". Start your learning journey today!",
+      "data": {
+        "courseId": "4"
+      },
+      "read": true,
+      "createdAt": "2026-04-02T10:15:55.274Z",
+      "source": "local"
+    },
+    {
+      "id": "local-1775124631384-9hiq",
+      "type": "enrollment",
+      "title": "Welcome to IIT! 🎉",
+      "body": "You now have access to \"IIT\". Start your learning journey today!",
+      "data": {
+        "courseId": "11"
+      },
+      "read": true,
+      "createdAt": "2026-04-02T10:10:31.384Z",
+      "source": "local"
+    },
+    {
+      "id": "local-1775124488024-nb3k",
+      "type": "enrollment",
+      "title": "Welcome to UPSC-CDS! 🎉",
+      "body": "You now have access to \"UPSC-CDS\". Start your learning journey today!",
+      "data": {
+        "courseId": "5"
+      },
+      "read": true,
+      "createdAt": "2026-04-02T10:08:08.024Z",
+      "source": "local"
+    },
+    {
+      "id": "local-1775124398221-17ga",
+      "type": "enrollment",
+      "title": "Welcome to React! 🎉",
+      "body": "You now have access to \"React\". Start your learning journey today!",
+      "data": {
+        "courseId": "8"
+      },
+      "read": true,
+      "createdAt": "2026-04-02T10:06:38.221Z",
+      "source": "local"
+    },
+    {
+      "id": "local-1775124250627-1dk9",
+      "type": "enrollment",
+      "title": "Welcome to NIMCET! 🎉",
+      "body": "You now have access to \"NIMCET\". Start your learning journey today!",
+      "data": {
+        "courseId": "6"
+      },
+      "read": true,
+      "createdAt": "2026-04-02T10:04:10.627Z",
+      "source": "local"
+    },
+    {
+      "id": "local-1775123890856-jr1c",
+      "type": "enrollment",
+      "title": "🎉 Enrolled successfully!",
+      "body": "You've been enrolled in \"AI Udaan 2026\". Start learning now!",
+      "data": {
+        "courseId": "7"
+      },
+      "read": true,
+      "createdAt": "2026-04-02T09:58:10.856Z",
+      "source": "local"
+    },
+    {
+      "id": "local-1775123814569-bkg2",
+      "type": "enrollment",
+      "title": "🎉 Enrolled successfully!",
+      "body": "You've been enrolled in \"new course\". Start learning now!",
+      "data": {
+        "courseId": "9"
+      },
+      "read": true,
+      "createdAt": "2026-04-02T09:56:54.569Z",
+      "source": "local"
+    }
+  ],
+  "moodle-16": [
+    {
+      "id": "local-1775125560051-i9lw",
+      "type": "enrollment",
+      "title": "Welcome to UPSC-CDS! 🎉",
+      "body": "You now have access to \"UPSC-CDS\". Start your learning journey today!",
+      "data": {
+        "courseId": "5"
+      },
+      "read": false,
+      "createdAt": "2026-04-02T10:26:00.051Z",
+      "source": "local"
+    },
+    {
+      "id": "local-1775125532916-mx3g",
+      "type": "enrollment",
+      "title": "Welcome to AI Udaan 2026! 🎉",
+      "body": "You now have access to \"AI Udaan 2026\". Start your learning journey today!",
+      "data": {
+        "courseId": "7"
+      },
+      "read": true,
+      "createdAt": "2026-04-02T10:25:32.916Z",
+      "source": "local"
+    },
+    {
+      "id": "local-1775125501642-xp0u",
+      "type": "enrollment",
+      "title": "Welcome to IIT! 🎉",
+      "body": "You now have access to \"IIT\". Start your learning journey today!",
+      "data": {
+        "courseId": "11"
+      },
+      "read": false,
+      "createdAt": "2026-04-02T10:25:01.642Z",
+      "source": "local"
+    }
+  ],
+  "moodle-20": [
+    {
+      "id": "local-1775453158665-3k7t",
+      "type": "enrollment",
+      "title": "Welcome to CAPF-AC! 🎉",
+      "body": "You now have access to \"CAPF-AC\". Start your learning journey today!",
+      "data": {
+        "courseId": "4"
+      },
+      "read": false,
+      "createdAt": "2026-04-06T05:25:58.665Z",
+      "source": "local"
+    },
+    {
+      "id": "local-1775452946495-tqv6",
+      "type": "enrollment",
+      "title": "Welcome to demo 2! 🎉",
+      "body": "You now have access to \"demo 2\". Start your learning journey today!",
+      "data": {
+        "courseId": "3"
+      },
+      "read": false,
+      "createdAt": "2026-04-06T05:22:26.495Z",
+      "source": "local"
+    },
+    {
+      "id": "local-1775422319990-5502",
+      "type": "enrollment",
+      "title": "Welcome to new course! 🎉",
+      "body": "You now have access to \"new course\". Start your learning journey today!",
+      "data": {
+        "courseId": "9"
+      },
+      "read": false,
+      "createdAt": "2026-04-05T20:51:59.990Z",
+      "source": "local"
+    }
+  ],
+  "moodle-6": [
+    {
+      "id": "local-1775300898385-iecq",
+      "type": "enrollment",
+      "title": "Welcome to AI Udaan 2026! 🎉",
+      "body": "You now have access to \"AI Udaan 2026\". Start your learning journey today!",
+      "data": {
+        "courseId": "7"
+      },
+      "read": false,
+      "createdAt": "2026-04-04T11:08:18.385Z",
+      "source": "local"
+    }
+  ],
+  "moodle-17": [
+    {
+      "id": "local-1776849754696-ulyj",
+      "type": "enrollment",
+      "title": "Welcome to CAPF-AC! 🎉",
+      "body": "You now have access to \"CAPF-AC\". Start your learning journey today!",
+      "data": {
+        "courseId": "4"
+      },
+      "read": true,
+      "createdAt": "2026-04-22T09:22:34.696Z",
+      "source": "local"
+    },
+    {
+      "id": "local-1776848847896-ksg5",
+      "type": "enrollment",
+      "title": "Welcome to IIT! 🎉",
+      "body": "You now have access to \"IIT\". Start your learning journey today!",
+      "data": {
+        "courseId": "11"
+      },
+      "read": true,
+      "createdAt": "2026-04-22T09:07:27.897Z",
+      "source": "local"
+    }
+  ],
+  "moodle-22": [
+    {
+      "id": "local-1776876116523-fz9l",
+      "type": "enrollment",
+      "title": "Welcome to AI Udaan 2026! 🎉",
+      "body": "You now have access to \"AI Udaan 2026\". Start your learning journey today!",
+      "data": {
+        "courseId": "7"
+      },
+      "read": true,
+      "createdAt": "2026-04-22T16:41:56.524Z",
+      "source": "local"
+    },
+    {
+      "id": "local-1776850012137-jknx",
+      "type": "enrollment",
+      "title": "Welcome to React! 🎉",
+      "body": "You now have access to \"React\". Start your learning journey today!",
+      "data": {
+        "courseId": "8"
+      },
+      "read": true,
+      "createdAt": "2026-04-22T09:26:52.137Z",
+      "source": "local"
+    }
+  ],
+  "moodle-18": [
+    {
+      "id": "local-1777544312643-8w2i",
+      "type": "enrollment",
+      "title": "Welcome to demo 2! 🎉",
+      "body": "You now have access to \"demo 2\". Start your learning journey today!",
+      "data": {
+        "courseId": "3"
+      },
+      "read": false,
+      "createdAt": "2026-04-30T10:18:32.643Z",
+      "source": "local"
+    },
+    {
+      "id": "local-1777544231359-l40f",
+      "type": "enrollment",
+      "title": "Welcome to NIMCET! 🎉",
+      "body": "You now have access to \"NIMCET\". Start your learning journey today!",
+      "data": {
+        "courseId": "6"
+      },
+      "read": true,
+      "createdAt": "2026-04-30T10:17:11.359Z",
+      "source": "local"
+    },
+    {
+      "id": "local-1777544176121-z1yc",
+      "type": "enrollment",
+      "title": "Welcome to React! 🎉",
+      "body": "You now have access to \"React\". Start your learning journey today!",
+      "data": {
+        "courseId": "8"
+      },
+      "read": true,
+      "createdAt": "2026-04-30T10:16:16.122Z",
+      "source": "local"
+    }
+  ]
+}

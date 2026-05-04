@@ -1,0 +1,115 @@
+# ========================================
+# BACKEND (Node.js) .gitignore
+# ========================================
+
+# CRITICAL: Environment variables (contains API keys, secrets, tokens)
+.env
+.env.local
+.env.*.local
+*.env
+
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Production build
+dist/
+build/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Runtime data
+lib-cov
+coverage/
+.nyc_output
+.grunt
+bower_components
+.lock-wscript
+
+# Uploads (user-generated content)
+uploads/*
+!uploads/.gitkeep
+!uploads/ai_intro.png
+!uploads/computer_vision.png
+!uploads/deep_learning.png
+!uploads/gen_ai.png
+!uploads/ml_fundamentals.png
+!uploads/nlp.png
+
+# Keep avatars folder structure but ignore uploaded avatars
+uploads/avatars/*
+!uploads/avatars/.gitkeep
+
+# Testing
+.nyc_output/
+coverage/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# dotenv environment variable files
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+# PM2
+.pm2/
+ecosystem.config.js.backup
+
+# Serverless
+.serverless/
+
+# FuseBox cache
+.fusebox/
+
+# DynamoDB Local files
+.dynamodb/
+
+# TernJS port file
+.tern-port
+
+# Stores VSCode versions used for testing VSCode extensions
+.vscode-test
+
+# Temporary folders
+tmp/
+temp/

@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, user-scalable=no">
+    <title>LMS — User Module Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0f0f1a;
+            --bg-secondary: #1a1a2e;
+            --bg-card: #16213e;
+            --bg-card-hover: #1c2a4a;
+            --accent: #00BFA6;
+            --accent-glow: rgba(0, 191, 166, 0.25);
+            --accent-dark: #009688;
+            --danger: #ef4444;
+            --danger-glow: rgba(239, 68, 68, 0.2);
+            --purple: #a855f7;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border: rgba(255, 255, 255, 0.06);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ─── Shell ─────────────────────────────────────────── */
+        .app-shell {
+            max-width: 420px;
+            margin: 30px auto;
+            background: var(--bg-secondary);
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.5), 0 0 0 1px var(--border);
+            position: relative;
+            min-height: 750px;
+        }
+
+        .phone-notch {
+            width: 120px; height: 28px;
+            background: var(--bg-primary);
+            border-radius: 0 0 18px 18px;
+            margin: 0 auto;
+            position: relative; z-index: 10;
+        }
+
+        /* ─── Header ────────────────────────────────────────── */
+        .screen-header {
+            padding: 12px 20px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(180deg, rgba(0,191,166,0.08) 0%, transparent 100%);
+        }
+        .screen-header h2 {
+            font-size: 18px; font-weight: 700;
+            flex: 1;
+        }
+        .back-btn {
+            width: 36px; height: 36px;
+            border: none; border-radius: 10px;
+            background: var(--bg-card);
+            color: var(--text-primary);
+            font-size: 18px; cursor: pointer;
+            display: none; align-items: center; justify-content: center;
+            transition: var(--transition);
+        }
+        .back-btn:hover { background: var(--bg-card-hover); }
+
+        /* ─── Bottom Nav ────────────────────────────────────── */
+        .bottom-nav {
+            display: flex;
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+            padding: 8px 0 14px;
+            z-index: 20;
+        }
+        .nav-item {
+            flex: 1; text-align: center;
+            cursor: pointer; padding: 6px 0;
+            transition: var(--transition);
+        }
+        .nav-item .icon { font-size: 20px; margin-bottom: 2px; }
+        .nav-item .label { font-size: 10px; color: var(--text-muted); font-weight: 500; }
+        .nav-item.active .icon { color: var(--accent); }
+        .nav-item.active .label { color: var(--accent); }
+
+        /* ─── Screens ───────────────────────────────────────── */
+        .screen {
+            display: none; padding: 0 20px 90px;
+            animation: fadeIn 0.35s ease;
+        }
+        .screen.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ─── Profile Screen ────────────────────────────────── */
+        .profile-hero {
+            text-align: center; padding: 20px 0 24px;
+        }
+        .avatar-ring {
+            width: 100px; height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--purple));
+            padding: 3px;
+            margin: 0 auto 16px;
+        }
+        .avatar-ring img, .avatar-ring .avatar-placeholder {
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .avatar-placeholder {
+            background: var(--bg-card);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 36px; font-weight: 700;
+            color: var(--accent);
+        }
+        .profile-name {
+            font-size: 22px; font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .profile-email {
+            font-size: 13px; color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+        .role-badge {
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 11px; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .role-badge.student {
+            background: var(--accent-glow);
+            color: var(--accent);
+        }
+        .role-badge.admin {
+            background: rgba(168, 85, 247, 0.2);
+            color: var(--purple);
+        }
+
+        .profile-stats {
+            display: grid; grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px; margin: 16px 0;
+        }
+        .stat-box {
+            background: var(--bg-card); border-radius: var(--radius-sm);
+            padding: 14px 8px; text-align: center;
+            border: 1px solid var(--border);
+        }
+        .stat-box .num { font-size: 20px; font-weight: 700; color: var(--accent); }
+        .stat-box .lbl { font-size: 10px; color: var(--text-muted); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.4px; }
+
+        .action-list { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+        .action-card {
+            display: flex; align-items: center; gap: 14px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 14px 16px; cursor: pointer;
+            transition: var(--transition);
+        }
+        .action-card:hover {
+            background: var(--bg-card-hover);
+            border-color: rgba(0, 191, 166, 0.2);
+            transform: translateX(4px);
+        }
+        .action-card .a-icon {
+            width: 40px; height: 40px;
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 18px;
+            background: var(--accent-glow);
+        }
+        .action-card .a-text { flex: 1; }
+        .action-card .a-text h4 { font-size: 14px; font-weight: 600; }
+        .action-card .a-text p { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+        .action-card .arrow { color: var(--text-muted); font-size: 14px; }
+
+        /* ─── Edit Profile Screen ───────────────────────────── */
+        .edit-avatar-wrap {
+            text-align: center; padding: 20px 0;
+        }
+        .edit-avatar {
+            width: 90px; height: 90px;
+            margin: 0 auto;
+            position: relative; cursor: pointer;
+        }
+        .edit-avatar .avatar-ring { width: 90px; height: 90px; }
+        .edit-avatar .cam-badge {
+            position: absolute; bottom: 0; right: -2px;
+            width: 28px; height: 28px;
+            background: var(--accent);
+            border-radius: 50%; display: flex;
+            align-items: center; justify-content: center;
+            font-size: 13px;
+            box-shadow: 0 2px 8px var(--accent-glow);
+        }
+
+        .form-group { margin-bottom: 18px; }
+        .form-group label {
+            display: block; font-size: 12px; font-weight: 600;
+            color: var(--text-secondary); margin-bottom: 6px;
+            text-transform: uppercase; letter-spacing: 0.4px;
+        }
+        .form-input {
+            width: 100%; padding: 13px 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            font-family: inherit; font-size: 14px;
+            transition: var(--transition);
+            outline: none;
+        }
+        .form-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+        .form-input::placeholder { color: var(--text-muted); }
+        .form-input:disabled {
+            opacity: 0.5; cursor: not-allowed;
+        }
+
+        .btn {
+            width: 100%; padding: 14px;
+            border: none; border-radius: var(--radius-sm);
+            font-family: inherit; font-size: 14px; font-weight: 600;
+            cursor: pointer; transition: var(--transition);
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: #fff;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px var(--accent-glow);
+        }
+        .btn-danger {
+            background: var(--danger);
+            color: #fff; margin-top: 10px;
+        }
+        .btn-danger:hover {
+            box-shadow: 0 8px 24px var(--danger-glow);
+        }
+
+        /* ─── Admin Users Screen ────────────────────────────── */
+        .search-bar {
+            display: flex; align-items: center;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 4px; margin: 12px 0;
+            transition: var(--transition);
+        }
+        .search-bar:focus-within {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+        .search-bar .s-icon { padding: 8px 10px; color: var(--text-muted); }
+        .search-bar input {
+            flex: 1; border: none; background: transparent;
+            color: var(--text-primary); font-family: inherit;
+            font-size: 13px; outline: none;
+        }
+        .search-bar input::placeholder { color: var(--text-muted); }
+
+        .filter-chips {
+            display: flex; gap: 8px; margin-bottom: 16px;
+        }
+        .chip {
+            padding: 6px 16px; border-radius: 20px;
+            font-size: 12px; font-weight: 600;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            cursor: pointer; transition: var(--transition);
+        }
+        .chip.active {
+            background: var(--accent-glow);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        .chip:hover:not(.active) { border-color: var(--text-muted); }
+
+        .user-card {
+            display: flex; align-items: center; gap: 12px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 12px 14px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .user-card:hover {
+            background: var(--bg-card-hover);
+            border-color: rgba(0,191,166,0.15);
+            transform: translateX(4px);
+        }
+        .user-card .u-avatar {
+            width: 42px; height: 42px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--purple));
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 16px; color: #fff;
+            flex-shrink: 0;
+        }
+        .user-card .u-info { flex: 1; min-width: 0; }
+        .user-card .u-name { font-size: 14px; font-weight: 600; }
+        .user-card .u-email { font-size: 11px; color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .user-card .u-badge { flex-shrink: 0; }
+
+        .pagination-bar {
+            display: flex; justify-content: center; align-items: center; gap: 12px;
+            padding: 16px 0;
+        }
+        .page-btn {
+            width: 34px; height: 34px;
+            border-radius: 8px; border: 1px solid var(--border);
+            background: var(--bg-card); color: var(--text-primary);
+            cursor: pointer; font-size: 14px;
+            display: flex; align-items: center; justify-content: center;
+            transition: var(--transition);
+        }
+        .page-btn:hover:not(:disabled) { border-color: var(--accent); }
+        .page-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+        .page-info { font-size: 12px; color: var(--text-muted); }
+
+        /* ─── User Detail Screen (admin) ────────────────────── */
+        .detail-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px; margin-bottom: 14px;
+        }
+        .detail-row {
+            display: flex; justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 13px;
+        }
+        .detail-row:last-child { border-bottom: none; }
+        .detail-row .d-label { color: var(--text-muted); }
+        .detail-row .d-value { font-weight: 600; text-align: right; }
+
+        .section-title {
+            font-size: 13px; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.6px;
+            color: var(--text-muted);
+            margin: 20px 0 10px;
+        }
+
+        /* ─── Toast ─────────────────────────────────────────── */
+        .toast {
+            position: fixed; bottom: 100px;
+            left: 50%; transform: translateX(-50%) translateY(80px);
+            background: var(--bg-card);
+            border: 1px solid var(--accent);
+            color: var(--text-primary);
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 13px; font-weight: 500;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+            opacity: 0; pointer-events: none;
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 100;
+        }
+        .toast.show {
+            opacity: 1; pointer-events: auto;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* ─── API indicator ─────────────────────────────────── */
+        .api-tag {
+            display: inline-flex; align-items: center; gap: 5px;
+            padding: 3px 10px; border-radius: 6px;
+            font-size: 10px; font-weight: 600;
+            font-family: 'Courier New', monospace;
+            letter-spacing: -0.3px;
+        }
+        .api-tag.get { background: rgba(34,197,94,0.15); color: #22c55e; }
+        .api-tag.put { background: rgba(251,191,36,0.15); color: #fbbf24; }
+        .api-tag.del { background: rgba(239,68,68,0.15); color: #ef4444; }
+
+        .api-indicator {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 10px 14px;
+            margin: 12px 0;
+            animation: fadeIn 0.3s ease;
+        }
+        .api-indicator .api-path {
+            font-family: 'Courier New', monospace;
+            font-size: 11px; color: var(--accent);
+            margin-top: 4px;
+        }
+
+        /* ─── Confirm Modal ─────────────────────────────────── */
+        .modal-overlay {
+            display: none; position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.65);
+            z-index: 200;
+            align-items: center; justify-content: center;
+        }
+        .modal-overlay.show { display: flex; }
+        .modal-box {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px; max-width: 320px; width: 90%;
+            text-align: center;
+            animation: fadeIn 0.25s ease;
+        }
+        .modal-box h3 { font-size: 18px; margin-bottom: 8px; }
+        .modal-box p { font-size: 13px; color: var(--text-secondary); margin-bottom: 20px; }
+        .modal-actions { display: flex; gap: 10px; }
+        .modal-actions button { flex: 1; padding: 11px; border: none; border-radius: var(--radius-sm); font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; transition: var(--transition); }
+        .modal-cancel { background: var(--bg-card); color: var(--text-primary); }
+        .modal-confirm { background: var(--danger); color: #fff; }
+
+        .count-badge {
+            background: var(--accent-glow);
+            color: var(--accent);
+            padding: 2px 10px; border-radius: 12px;
+            font-size: 11px; font-weight: 600;
+        }
+
+        /* ─── Loading shimmer ───────────────────────────────── */
+        .loading-text {
+            color: var(--text-muted);
+            font-size: 12px;
+            text-align: center;
+            padding: 20px;
+        }
+        .loading-text::after {
+            content: '';
+            animation: dots 1.5s infinite;
+        }
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-shell">
+    <div class="phone-notch"></div>
+
+    <!-- ════════════ Screen 1: My Profile ════════════ -->
+    <div class="screen active" id="screen-profile">
+        <div class="screen-header">
+            <h2>My Profile</h2>
+            <span class="api-tag get">GET</span>
+        </div>
+        <div class="api-indicator">
+            <span class="api-tag get">GET</span>
+            <div class="api-path">/api/users/profile</div>
+        </div>
+
+        <div class="profile-hero">
+            <div class="avatar-ring">
+                <div class="avatar-placeholder" id="profile-initial">P</div>
+            </div>
+            <div class="profile-name" id="profile-name">Priya Jaiswal</div>
+            <div class="profile-email" id="profile-email">priya@example.com</div>
+            <span class="role-badge student" id="profile-role">Student</span>
+        </div>
+
+        <div class="profile-stats">
+            <div class="stat-box">
+                <div class="num">5</div>
+                <div class="lbl">Courses</div>
+            </div>
+            <div class="stat-box">
+                <div class="num">23</div>
+                <div class="lbl">Lessons</div>
+            </div>
+            <div class="stat-box">
+                <div class="num">Mar '26</div>
+                <div class="lbl">Joined</div>
+            </div>
+        </div>
+
+        <div class="action-list">
+            <div class="action-card" onclick="showScreen('edit-profile')">
+                <div class="a-icon">✏️</div>
+                <div class="a-text">
+                    <h4>Edit Profile</h4>
+                    <p>Update your name & avatar</p>
+                </div>
+                <span class="arrow">›</span>
+            </div>
+            <div class="action-card" onclick="showToast('📚 Navigates to My Courses screen')">
+                <div class="a-icon">📖</div>
+                <div class="a-text">
+                    <h4>My Enrollments</h4>
+                    <p>View your enrolled courses</p>
+                </div>
+                <span class="arrow">›</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ════════════ Screen 2: Edit Profile ════════════ -->
+    <div class="screen" id="screen-edit-profile">
+        <div class="screen-header">
+            <button class="back-btn" style="display:flex" onclick="showScreen('profile')">‹</button>
+            <h2>Edit Profile</h2>
+            <span class="api-tag put">PUT</span>
+        </div>
+        <div class="api-indicator">
+            <span class="api-tag put">PUT</span>
+            <div class="api-path">/api/users/profile</div>
+        </div>
+
+        <div class="edit-avatar-wrap">
+            <div class="edit-avatar">
+                <div class="avatar-ring">
+                    <div class="avatar-placeholder">P</div>
+                </div>
+                <div class="cam-badge">📷</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Full Name</label>
+            <input class="form-input" id="edit-name" type="text" value="Priya Jaiswal" placeholder="Your name">
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input class="form-input" type="email" value="priya@example.com" disabled>
+        </div>
+        <div class="form-group">
+            <label>Avatar URL</label>
+            <input class="form-input" id="edit-avatar" type="url" placeholder="https://example.com/photo.jpg">
+        </div>
+
+        <button class="btn btn-primary" onclick="saveProfile()">Save Changes</button>
+    </div>
+
+    <!-- ════════════ Screen 3: Admin User List ════════════ -->
+    <div class="screen" id="screen-admin-users">
+        <div class="screen-header">
+            <h2>Users</h2>
+            <span class="count-badge" id="user-count-badge">6 users</span>
+        </div>
+        <div class="api-indicator">
+            <span class="api-tag get">GET</span>
+            <div class="api-path">/api/users?search=&role=&page=1</div>
+        </div>
+
+        <div class="search-bar">
+            <span class="s-icon">🔍</span>
+            <input type="text" placeholder="Search by name or email..." id="user-search" oninput="filterUsers()">
+        </div>
+
+        <div class="filter-chips">
+            <span class="chip active" data-role="all" onclick="setRoleFilter(this, 'all')">All</span>
+            <span class="chip" data-role="student" onclick="setRoleFilter(this, 'student')">Students</span>
+            <span class="chip" data-role="admin" onclick="setRoleFilter(this, 'admin')">Admins</span>
+        </div>
+
+        <div id="user-list"></div>
+
+        <div class="pagination-bar">
+            <button class="page-btn" id="prev-btn" onclick="changePage(-1)" disabled>‹</button>
+            <span class="page-info" id="page-info">Page 1 of 1</span>
+            <button class="page-btn" id="next-btn" onclick="changePage(1)">›</button>
+        </div>
+    </div>
+
+    <!-- ════════════ Screen 4: Admin User Detail ════════════ -->
+    <div class="screen" id="screen-user-detail">
+        <div class="screen-header">
+            <button class="back-btn" style="display:flex" onclick="showScreen('admin-users')">‹</button>
+            <h2>User Detail</h2>
+            <span class="api-tag get">GET</span>
+        </div>
+        <div class="api-indicator" id="detail-api">
+            <span class="api-tag get">GET</span>
+            <div class="api-path">/api/users/:id</div>
+        </div>
+
+        <div class="profile-hero" style="padding-bottom:10px">
+            <div class="avatar-ring" style="width:80px;height:80px">
+                <div class="avatar-placeholder" id="detail-initial" style="font-size:28px">?</div>
+            </div>
+            <div class="profile-name" id="detail-name">—</div>
+            <div class="profile-email" id="detail-email">—</div>
+            <span class="role-badge student" id="detail-role">—</span>
+        </div>
+
+        <div class="detail-card">
+            <div class="detail-row">
+                <span class="d-label">User ID</span>
+                <span class="d-value" id="detail-id" style="font-size:11px;font-family:monospace">—</span>
+            </div>
+            <div class="detail-row">
+                <span class="d-label">Role</span>
+                <span class="d-value" id="detail-role-text">—</span>
+            </div>
+            <div class="detail-row">
+                <span class="d-label">Joined</span>
+                <span class="d-value" id="detail-joined">—</span>
+            </div>
+        </div>
+
+        <div class="section-title">Enrolled Courses</div>
+        <div id="detail-enrollments"></div>
+
+        <button class="btn btn-danger" onclick="confirmDeleteUser()" id="delete-user-btn">
+            🗑️ Delete This User
+        </button>
+        <div class="api-indicator" style="margin-top:8px">
+            <span class="api-tag del">DELETE</span>
+            <div class="api-path">/api/users/:id</div>
+        </div>
+    </div>
+
+    <!-- ════════════ Bottom Nav ════════════ -->
+    <div class="bottom-nav">
+        <div class="nav-item active" onclick="showScreen('profile')" id="nav-profile">
+            <div class="icon">👤</div>
+            <div class="label">Profile</div>
+        </div>
+        <div class="nav-item" onclick="showScreen('admin-users')" id="nav-users">
+            <div class="icon">👥</div>
+            <div class="label">Users</div>
+        </div>
+    </div>
+</div>
+
+<!-- ════════════ Delete Modal ════════════ -->
+<div class="modal-overlay" id="delete-modal">
+    <div class="modal-box">
+        <h3>Delete User?</h3>
+        <p id="delete-modal-text">Are you sure you want to permanently delete this user? This action cannot be undone.</p>
+        <div class="modal-actions">
+            <button class="modal-cancel" onclick="closeModal()">Cancel</button>
+            <button class="modal-confirm" onclick="deleteSelectedUser()">Delete</button>
+        </div>
+    </div>
+</div>
+
+<!-- ════════════ Toast ════════════ -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ─── Mock Data ──────────────────────────────────────────────────
+const mockUsers = [
+    { id: 'a1b2c3d4-e5f6-7890-abcd-111111111111', name: 'Priya Jaiswal', email: 'priya@example.com', role: 'admin', created_at: '2026-03-01T10:00:00Z', enrollments: [] },
+    { id: 'a1b2c3d4-e5f6-7890-abcd-222222222222', name: 'Aarav Sharma', email: 'aarav@example.com', role: 'student', created_at: '2026-03-01T11:00:00Z', enrollments: [{ course: 'React Mastery' }, { course: 'Node.js Bootcamp' }] },
+    { id: 'a1b2c3d4-e5f6-7890-abcd-333333333333', name: 'Diya Patel', email: 'diya@example.com', role: 'student', created_at: '2026-03-01T12:00:00Z', enrollments: [{ course: 'Flutter Complete Guide' }] },
+    { id: 'a1b2c3d4-e5f6-7890-abcd-444444444444', name: 'Rohan Mehta', email: 'rohan@example.com', role: 'student', created_at: '2026-03-02T08:30:00Z', enrollments: [{ course: 'Python AI/ML' }, { course: 'React Mastery' }, { course: 'Database Design' }] },
+    { id: 'a1b2c3d4-e5f6-7890-abcd-555555555555', name: 'Ananya Gupta', email: 'ananya@example.com', role: 'student', created_at: '2026-03-02T09:00:00Z', enrollments: [{ course: 'Flutter Complete Guide' }] },
+    { id: 'a1b2c3d4-e5f6-7890-abcd-666666666666', name: 'Admin Tester', email: 'admin2@example.com', role: 'admin', created_at: '2026-02-28T15:00:00Z', enrollments: [] },
+];
+
+let currentUser = { ...mockUsers[0] };
+let currentRoleFilter = 'all';
+let currentPage = 1;
+const perPage = 4;
+let selectedUserForDelete = null;
+
+// ─── Navigation ─────────────────────────────────────────────────
+function showScreen(name) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById('screen-' + name).classList.add('active');
+
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    if (name === 'profile' || name === 'edit-profile') {
+        document.getElementById('nav-profile').classList.add('active');
+    } else {
+        document.getElementById('nav-users').classList.add('active');
+    }
+
+    if (name === 'admin-users') renderUserList();
+}
+
+// ─── Profile ────────────────────────────────────────────────────
+function refreshProfile() {
+    document.getElementById('profile-name').textContent = currentUser.name;
+    document.getElementById('profile-email').textContent = currentUser.email;
+    document.getElementById('profile-initial').textContent = currentUser.name.charAt(0);
+    const badge = document.getElementById('profile-role');
+    badge.textContent = currentUser.role.charAt(0).toUpperCase() + currentUser.role.slice(1);
+    badge.className = 'role-badge ' + currentUser.role;
+}
+
+function saveProfile() {
+    const newName = document.getElementById('edit-name').value.trim();
+    if (!newName) {
+        showToast('⚠️ Name cannot be empty');
+        return;
+    }
+    currentUser.name = newName;
+    // Also update in the mock list
+    const idx = mockUsers.findIndex(u => u.id === currentUser.id);
+    if (idx >= 0) mockUsers[idx].name = newName;
+
+    refreshProfile();
+    showScreen('profile');
+    showToast('✅ Profile updated! PUT /api/users/profile → 200 OK');
+}
+
+// ─── Admin User List ────────────────────────────────────────────
+function getFilteredUsers() {
+    const search = (document.getElementById('user-search')?.value || '').toLowerCase();
+    return mockUsers.filter(u => {
+        const matchRole = currentRoleFilter === 'all' || u.role === currentRoleFilter;
+        const matchSearch = u.name.toLowerCase().includes(search) || u.email.toLowerCase().includes(search);
+        return matchRole && matchSearch;
+    });
+}
+
+function renderUserList() {
+    const filtered = getFilteredUsers();
+    const totalPages = Math.max(1, Math.ceil(filtered.length / perPage));
+    if (currentPage > totalPages) currentPage = totalPages;
+
+    const start = (currentPage - 1) * perPage;
+    const pageUsers = filtered.slice(start, start + perPage);
+
+    const container = document.getElementById('user-list');
+    container.innerHTML = pageUsers.map(u => `
+        <div class="user-card" onclick="showUserDetail('${u.id}')">
+            <div class="u-avatar">${u.name.charAt(0)}</div>
+            <div class="u-info">
+                <div class="u-name">${u.name}</div>
+                <div class="u-email">${u.email}</div>
+            </div>
+            <span class="role-badge ${u.role} u-badge">${u.role}</span>
+        </div>
+    `).join('');
+
+    if (pageUsers.length === 0) {
+        container.innerHTML = '<div class="loading-text">No users found</div>';
+    }
+
+    document.getElementById('user-count-badge').textContent = `${filtered.length} user${filtered.length !== 1 ? 's' : ''}`;
+    document.getElementById('page-info').textContent = `Page ${currentPage} of ${totalPages}`;
+    document.getElementById('prev-btn').disabled = currentPage <= 1;
+    document.getElementById('next-btn').disabled = currentPage >= totalPages;
+}
+
+function filterUsers() {
+    currentPage = 1;
+    renderUserList();
+}
+
+function setRoleFilter(el, role) {
+    currentRoleFilter = role;
+    document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+    currentPage = 1;
+    renderUserList();
+}
+
+function changePage(dir) {
+    currentPage += dir;
+    renderUserList();
+}
+
+// ─── User Detail ────────────────────────────────────────────────
+function showUserDetail(userId) {
+    const user = mockUsers.find(u => u.id === userId);
+    if (!user) return;
+
+    document.getElementById('detail-name').textContent = user.name;
+    document.getElementById('detail-email').textContent = user.email;
+    document.getElementById('detail-initial').textContent = user.name.charAt(0);
+    document.getElementById('detail-id').textContent = user.id.substring(0, 18) + '...';
+
+    const badge = document.getElementById('detail-role');
+    badge.textContent = user.role.charAt(0).toUpperCase() + user.role.slice(1);
+    badge.className = 'role-badge ' + user.role;
+    document.getElementById('detail-role-text').textContent = user.role;
+
+    const joined = new Date(user.created_at);
+    document.getElementById('detail-joined').textContent = joined.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+
+    const enrollContainer = document.getElementById('detail-enrollments');
+    if (user.enrollments.length === 0) {
+        enrollContainer.innerHTML = '<div class="loading-text" style="padding:10px">No enrollments yet</div>';
+    } else {
+        enrollContainer.innerHTML = user.enrollments.map(e => `
+            <div class="user-card" style="cursor:default">
+                <div class="u-avatar" style="background:linear-gradient(135deg,#6366f1,#a855f7);width:36px;height:36px;font-size:14px">📚</div>
+                <div class="u-info">
+                    <div class="u-name">${e.course}</div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    // Hide delete for current user (self)
+    const delBtn = document.getElementById('delete-user-btn');
+    delBtn.style.display = userId === currentUser.id ? 'none' : 'block';
+
+    selectedUserForDelete = userId;
+
+    document.getElementById('detail-api').querySelector('.api-path').textContent = `/api/users/${userId.substring(0, 8)}...`;
+
+    showScreen('user-detail');
+}
+
+// ─── Delete User ────────────────────────────────────────────────
+function confirmDeleteUser() {
+    const user = mockUsers.find(u => u.id === selectedUserForDelete);
+    if (!user) return;
+    document.getElementById('delete-modal-text').textContent =
+        `Are you sure you want to delete "${user.name}"? This action cannot be undone.`;
+    document.getElementById('delete-modal').classList.add('show');
+}
+
+function closeModal() {
+    document.getElementById('delete-modal').classList.remove('show');
+}
+
+function deleteSelectedUser() {
+    const idx = mockUsers.findIndex(u => u.id === selectedUserForDelete);
+    if (idx >= 0) {
+        const name = mockUsers[idx].name;
+        mockUsers.splice(idx, 1);
+        closeModal();
+        showScreen('admin-users');
+        showToast(`🗑️ "${name}" deleted! DELETE /api/users/:id → 200 OK`);
+    }
+}
+
+// ─── Toast ──────────────────────────────────────────────────────
+function showToast(msg) {
+    const toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3000);
+}
+
+// ─── Init ───────────────────────────────────────────────────────
+refreshProfile();
+renderUserList();
+</script>
+
+</body>
+</html>
