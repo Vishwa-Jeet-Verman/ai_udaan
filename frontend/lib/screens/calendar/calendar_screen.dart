@@ -403,7 +403,7 @@ class _AddEventSheetState extends State<_AddEventSheet> {
     final picked = await showDatePicker(
       context: context,
       initialDate: _selectedDate,
-      firstDate: DateTime.now().subtract(const Duration(days: 1)),
+      firstDate: DateTime.now(),
       lastDate: DateTime(2030),
     );
     if (picked != null) setState(() => _selectedDate = picked);
@@ -419,7 +419,6 @@ class _AddEventSheetState extends State<_AddEventSheet> {
 
   Future<void> _submit() async {
     if (!_formKey.currentState!.validate()) return;
-    setState(() => _loading = true);
 
     final startAt = DateTime(
       _selectedDate.year,
@@ -428,6 +427,21 @@ class _AddEventSheetState extends State<_AddEventSheet> {
       _selectedTime.hour,
       _selectedTime.minute,
     );
+
+    // Validate that event is not in the past
+    final now = DateTime.now();
+    if (startAt.isBefore(now)) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(AppLocalizations.of(context)!.cannotCreateEventInPast),
+          ),
+        );
+      }
+      return;
+    }
+
+    setState(() => _loading = true);
 
     try {
       await context.read<CalendarProvider>().createEvent(

@@ -200,6 +200,7 @@
   "createEvent": "कार्यक्रम बनाएं",
   "reminderSetOnMoodle": "Moodle पर रिमाइंडर सेट किया गया",
   "eventCreatedOnMoodle": "Moodle पर कार्यक्रम बनाया गया",
+  "cannotCreateEventInPast": "भूतकाल में कार्यक्रम नहीं बना सकते। कृपया भविष्य की तारीख और समय चुनें।",
 
   "notLoggedIn": "लॉग इन नहीं है",
   "profileUpdated": "प्रोफ़ाइल अपडेट हो गई!",

@@ -200,6 +200,7 @@
   "createEvent": "Create Event",
   "reminderSetOnMoodle": "Reminder set on Moodle",
   "eventCreatedOnMoodle": "Event created on Moodle",
+  "cannotCreateEventInPast": "Cannot create event in the past. Please select a future date and time.",
 
   "notLoggedIn": "Not logged in",
   "profileUpdated": "Profile updated!",

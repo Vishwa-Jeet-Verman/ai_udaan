@@ -59,9 +59,12 @@ class _LessonScreenState extends State<LessonScreen> {
 
         final sourceUrl = _videoSourceUrl;
         if (sourceUrl != null && sourceUrl.isNotEmpty) {
+          // Check if URL is a playable Moodle plugin file
+          final isPlayableMoodleUrl = _isLikelyStreamableVideoUrl(sourceUrl);
+          
           if (!kIsWeb && _isYouTubeUrl(sourceUrl)) {
             // Mobile YouTube uses a dedicated player widget so seek works.
-          } else if (_isLikelyStreamableVideoUrl(sourceUrl)) {
+          } else if (isPlayableMoodleUrl) {
             try {
               _videoController = VideoPlayerController.networkUrl(
                 Uri.parse(sourceUrl),
@@ -110,19 +113,23 @@ class _LessonScreenState extends State<LessonScreen> {
               _disposePlayer();
               if (kIsWeb && _canInlineEmbed(sourceUrl)) {
                 _useInlineEmbed = true;
+              } else if (!kIsWeb) {
+                _webViewController = _buildWebViewController(sourceUrl);
               } else {
                 _useExternalVideoPlayer = true;
               }
             }
+          } else if (_canInlineEmbed(sourceUrl)) {
+            // Only use inline embed for known embeddable sources
+            _useInlineEmbed = true;
+          } else if (_isMoodleNonPlayableUrl(sourceUrl)) {
+            // Moodle URLs that are not playable files - show "no video"
+            // Don't set _useExternalVideoPlayer or _webViewController
+          } else if (kIsWeb) {
+            // Unknown non-streamable URLs still need the external fallback.
+            _useExternalVideoPlayer = true;
           } else {
-            if (kIsWeb && _canInlineEmbed(sourceUrl)) {
-              _useInlineEmbed = true;
-            } else if (kIsWeb) {
-              // Unknown non-streamable URLs still need the external fallback.
-              _useExternalVideoPlayer = true;
-            } else {
-              _webViewController = _buildWebViewController(sourceUrl);
-            }
+            _webViewController = _buildWebViewController(sourceUrl);
           }
         }
       }
@@ -364,6 +371,28 @@ class _LessonScreenState extends State<LessonScreen> {
     }
 
     return false;
+  }
+
+  bool _isMoodleNonPlayableUrl(String rawUrl) {
+    final uri = Uri.tryParse(rawUrl);
+    if (uri == null || !uri.hasScheme) return false;
+
+    final host = uri.host.toLowerCase();
+    final path = uri.path.toLowerCase();
+
+    // Check if it's a Moodle domain
+    final isMoodleUrl = host.contains('moodle') || host.contains('nighwantech');
+
+    if (!isMoodleUrl) return false;
+
+    // If it's a Moodle pluginfile, it's playable
+    if (path.contains('/webservice/pluginfile.php')) return false;
+
+    // Other Moodle URLs that don't have playable file extensions are not playable
+    const knownVideoExtensions = ['.mp4', '.m3u8', '.webm', '.mov', '.m4v'];
+    final hasVideoExtension = knownVideoExtensions.any(path.endsWith);
+
+    return !hasVideoExtension;
   }
 
   Future<void> _openExternalUrl(String rawUrl) async {

@@ -397,6 +397,28 @@ class _CourseDetailScreenState extends State<CourseDetailScreen> {
     return scheme == 'http' || scheme == 'https';
   }
 
+  bool _isMoodleNonPlayableUrl(String rawUrl) {
+    final uri = Uri.tryParse(rawUrl);
+    if (uri == null || !uri.hasScheme) return false;
+
+    final host = uri.host.toLowerCase();
+    final path = uri.path.toLowerCase();
+
+    // Check if it's a Moodle domain
+    final isMoodleUrl = host.contains('moodle') || host.contains('nighwantech');
+
+    if (!isMoodleUrl) return false;
+
+    // If it's a Moodle pluginfile, it's playable
+    if (path.contains('/webservice/pluginfile.php')) return false;
+
+    // Other Moodle URLs that don't have playable file extensions are not playable
+    const knownVideoExtensions = ['.mp4', '.m3u8', '.webm', '.mov', '.m4v'];
+    final hasVideoExtension = knownVideoExtensions.any(path.endsWith);
+
+    return !hasVideoExtension;
+  }
+
   String _toExternalPlayableUrl(String rawUrl) {
     final uri = Uri.tryParse(rawUrl);
     if (uri == null) return rawUrl;
@@ -714,14 +736,18 @@ class _CourseDetailScreenState extends State<CourseDetailScreen> {
           _useExternalFallback = true;
         }
       }
+    } else if (_canInlineEmbed(rawUrl)) {
+      // Only use inline embed for known embeddable sources
+      _useInlineEmbed = true;
+    } else if (_isMoodleNonPlayableUrl(rawUrl)) {
+      // Moodle URLs that are not playable files - show "no video"
+      // Don't set _webViewController or _useExternalFallback
+    } else if (kIsWeb) {
+      // Web platform fallback for other URLs
+      _useExternalFallback = true;
     } else {
-      if (kIsWeb && (_canInlineEmbed(rawUrl) || _isHttpPlayableUrl(rawUrl))) {
-        _useInlineEmbed = true;
-      } else if (kIsWeb) {
-        _useExternalFallback = true;
-      } else {
-        _webViewController = _buildVideoWebController(rawUrl);
-      }
+      // Mobile platform - try WebViewController
+      _webViewController = _buildVideoWebController(rawUrl);
     }
 
     setState(() => _videoLoading = false);

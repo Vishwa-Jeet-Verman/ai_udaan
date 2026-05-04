@@ -1070,6 +1070,12 @@ abstract class AppLocalizations {
   /// **'Event created on Moodle'**
   String get eventCreatedOnMoodle;
 
+  /// No description provided for @cannotCreateEventInPast.
+  ///
+  /// In en, this message translates to:
+  /// **'Cannot create event in the past. Please select a future date and time.'**
+  String get cannotCreateEventInPast;
+
   /// No description provided for @notLoggedIn.
   ///
   /// In en, this message translates to:

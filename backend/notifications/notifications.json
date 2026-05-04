@@ -480,7 +480,7 @@
       "data": {
         "courseId": "7"
       },
-      "read": false,
+      "read": true,
       "createdAt": "2026-04-04T11:08:18.385Z",
       "source": "local"
     }
