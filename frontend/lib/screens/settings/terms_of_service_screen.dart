@@ -47,7 +47,7 @@ class TermsOfServiceScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'Last updated: March 9, 2026',
+                  'Last updated: June 6, 2026',
                   style: TextStyle(fontSize: 14, color: Colors.grey[600]),
                 ),
                 const SizedBox(height: 24),
@@ -56,109 +56,156 @@ class TermsOfServiceScreen extends StatelessWidget {
                   context,
                   title: '1. Acceptance of Terms',
                   content:
-                      'By accessing and using this Learning Management System (LMS), you accept and agree to be bound by the terms and provisions of this agreement. If you do not agree to these terms, please do not use this service.',
+                      'By downloading, installing, or using the AI UDAAN app ("App"), you agree to be bound by '
+                      'these Terms of Service ("Terms"). These Terms apply to all users of the App, including '
+                      'learners, guests, and any other individuals who access our services.\n\n'
+                      'If you do not agree to these Terms, do not use the App.',
                 ),
 
                 _buildSection(
                   context,
-                  title: '2. Use License',
+                  title: '2. About AI UDAAN',
                   content:
-                      'Permission is granted to temporarily access the materials (information or software) on NGTech LMS for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:\n\n'
-                      '• Modify or copy the materials\n'
-                      '• Use the materials for commercial purposes\n'
-                      '• Attempt to decompile or reverse engineer any software\n'
-                      '• Remove any copyright or proprietary notations\n'
-                      '• Transfer the materials to another person',
+                      'AI UDAAN is an online learning platform operated by AI Learn NG LMS, hosted at '
+                      'Buddha Institute of Technology, Gaya Ji, Bihar, India. The platform provides access '
+                      'to AI, machine learning, deep learning, and related technology courses — both free '
+                      'and paid — delivered through Moodle LMS.',
                 ),
 
                 _buildSection(
                   context,
-                  title: '3. User Account',
+                  title: '3. Eligibility',
                   content:
-                      'To access certain features of the service, you must register for an account. You agree to:\n\n'
-                      '• Provide accurate, current, and complete information\n'
-                      '• Maintain and promptly update your account information\n'
-                      '• Maintain the security of your password\n'
-                      '• Accept responsibility for all activities under your account\n'
-                      '• Notify us immediately of any unauthorized use',
+                      'To use this App you must:\n\n'
+                      '• Be at least 13 years of age\n'
+                      '• Provide accurate and complete registration information\n'
+                      '• Keep your account credentials confidential\n'
+                      '• Not share your account with any other person\n\n'
+                      'By registering, you confirm that all information you provide is truthful and accurate.',
                 ),
 
                 _buildSection(
                   context,
-                  title: '4. Course Enrollment and Access',
+                  title: '4. Account Registration',
                   content:
-                      'When you enroll in a course:\n\n'
-                      '• You gain access to course materials for the duration specified\n'
-                      '• Access may be revoked for violation of these terms\n'
-                      '• Course content is subject to change\n'
-                      '• Completion certificates are issued upon meeting requirements\n'
-                      '• Refund policies are subject to individual course terms',
+                      'You must create an account to access courses and track your progress. You are responsible '
+                      'for all activity that occurs under your account. If you suspect unauthorized use of your '
+                      'account, contact us immediately at info@aiudaanbootcamp.com.\n\n'
+                      'We reserve the right to suspend or terminate accounts that violate these Terms.',
                 ),
 
                 _buildSection(
                   context,
-                  title: '5. User Conduct',
+                  title: '5. Course Enrollment & Access',
                   content:
-                      'You agree not to:\n\n'
+                      'Free courses are available to all registered users at no charge. Paid courses require '
+                      'payment before access is granted.\n\n'
+                      '• Upon successful enrollment, you are granted a personal, non-transferable license to '
+                      'access course content for your own learning.\n'
+                      '• Course access is tied to your account and may not be shared or transferred.\n'
+                      '• We reserve the right to modify, update, or discontinue course content at any time.\n'
+                      '• Enrollment is managed through Moodle LMS. Access issues should be reported to support.',
+                ),
+
+                _buildSection(
+                  context,
+                  title: '6. Payments & Refunds',
+                  content:
+                      'All payments for paid courses are processed securely through Razorpay in Indian Rupees (₹).\n\n'
+                      '• Prices are displayed on the course listing before purchase.\n'
+                      '• Once a payment is verified and enrollment is confirmed, it is considered final.\n'
+                      '• Refunds are not automatically provided. If you face a payment or enrollment issue, '
+                      'contact us at info@aiudaanbootcamp.com within 7 days of the transaction.\n'
+                      '• We are not responsible for payment failures caused by your bank, network issues, '
+                      'or incorrect payment details.',
+                ),
+
+                _buildSection(
+                  context,
+                  title: '7. Intellectual Property',
+                  content:
+                      'All content on the AI UDAAN platform — including course material, videos, text, graphics, '
+                      'logos, and the App itself — is the property of AI Learn NG LMS or its content providers '
+                      'and is protected by applicable intellectual property laws.\n\n'
+                      'You may not:\n\n'
+                      '• Copy, reproduce, or redistribute course content\n'
+                      '• Use course material for commercial purposes\n'
+                      '• Reverse-engineer or attempt to extract the App\'s source code\n'
+                      '• Share access credentials or enrolled course content with others',
+                ),
+
+                _buildSection(
+                  context,
+                  title: '8. Prohibited Conduct',
+                  content:
+                      'When using AI UDAAN, you agree not to:\n\n'
                       '• Violate any applicable laws or regulations\n'
-                      '• Infringe on intellectual property rights\n'
-                      '• Upload malicious code or harmful content\n'
-                      '• Harass, threaten, or abuse other users\n'
-                      '• Share account credentials\n'
-                      '• Use the service for unauthorized commercial purposes\n'
-                      '• Collect user data without permission',
+                      '• Attempt to gain unauthorized access to other accounts or backend systems\n'
+                      '• Upload or transmit harmful, offensive, or malicious content\n'
+                      '• Interfere with the App\'s functionality or infrastructure\n'
+                      '• Use automated tools or bots to scrape content or enroll in courses\n'
+                      '• Impersonate any person or entity',
                 ),
 
                 _buildSection(
                   context,
-                  title: '6. Intellectual Property',
+                  title: '9. Notifications & Communications',
                   content:
-                      'All course materials, including text, graphics, videos, and other content, are the property of NGTech LMS or its content suppliers and are protected by copyright and intellectual property laws. Unauthorized reproduction or distribution is prohibited.',
+                      'By creating an account, you consent to receiving:\n\n'
+                      '• Enrollment confirmation emails\n'
+                      '• Course update and progress notifications via the App\n'
+                      '• Important service announcements\n\n'
+                      'You can manage notification preferences in Settings → Notifications. '
+                      'You may opt out of marketing communications at any time.',
                 ),
 
                 _buildSection(
                   context,
-                  title: '7. Disclaimers',
+                  title: '10. Disclaimers',
                   content:
-                      'The materials on NGTech LMS are provided on an \'as is\' basis. NGTech LMS makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.',
+                      'The App and all content are provided "as is" without any warranty of any kind. '
+                      'AI Learn NG LMS does not guarantee:\n\n'
+                      '• Uninterrupted or error-free access to the platform\n'
+                      '• That course content will meet your specific learning objectives\n'
+                      '• Employment or certification outcomes from completing courses\n\n'
+                      'Use of the platform is at your own risk.',
                 ),
 
                 _buildSection(
                   context,
-                  title: '8. Limitations of Liability',
+                  title: '11. Limitation of Liability',
                   content:
-                      'In no event shall NGTech LMS or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on NGTech LMS.',
+                      'To the fullest extent permitted by law, AI Learn NG LMS shall not be liable for any '
+                      'indirect, incidental, or consequential damages arising from your use of the App, '
+                      'including loss of data, enrollment errors, or payment disputes beyond amounts '
+                      'actually paid by you for the affected course.',
                 ),
 
                 _buildSection(
                   context,
-                  title: '9. Termination',
+                  title: '12. Governing Law',
                   content:
-                      'We may terminate or suspend your account and access to the service immediately, without prior notice or liability, for any reason, including if you breach these Terms. Upon termination, your right to use the service will cease immediately.',
+                      'These Terms are governed by the laws of India. Any disputes arising from these Terms '
+                      'or your use of the App shall be subject to the exclusive jurisdiction of the courts '
+                      'in Bihar, India.',
                 ),
 
                 _buildSection(
                   context,
-                  title: '10. Changes to Terms',
+                  title: '13. Changes to These Terms',
                   content:
-                      'We reserve the right to modify or replace these Terms at any time. If a revision is material, we will provide at least 30 days\' notice prior to any new terms taking effect. Continued use of the service after changes constitutes acceptance of the new terms.',
+                      'We may update these Terms of Service from time to time. Changes take effect immediately '
+                      'upon posting in the App. Continued use of the App after changes are posted constitutes '
+                      'your acceptance of the updated Terms.',
                 ),
 
                 _buildSection(
                   context,
-                  title: '11. Governing Law',
+                  title: '14. Contact Us',
                   content:
-                      'These Terms shall be governed and construed in accordance with the laws of the jurisdiction in which NGTech LMS operates, without regard to its conflict of law provisions.',
-                ),
-
-                _buildSection(
-                  context,
-                  title: '12. Contact Information',
-                  content:
-                      'If you have any questions about these Terms, please contact us:\n\n'
-                      'Email: legal@ngtech.com\n'
-                      'Phone: +1 (555) 123-4567\n'
-                      'Address: 123 Education St, Learning City, LC 12345',
+                      'For any questions or concerns regarding these Terms, please reach out:\n\n'
+                      'Email: info@aiudaanbootcamp.com\n'
+                      'Address: Buddha Institute of Technology, Gaya Ji, Bihar, India',
                 ),
 
                 const SizedBox(height: 32),

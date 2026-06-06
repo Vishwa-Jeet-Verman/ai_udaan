@@ -47,96 +47,99 @@ class PrivacyPolicyScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'Last updated: March 9, 2026',
+                  'Last updated: June 6, 2026',
                   style: TextStyle(fontSize: 14, color: Colors.grey[600]),
                 ),
                 const SizedBox(height: 24),
 
                 _buildSection(
                   context,
-                  title: '1. Information We Collect',
+                  title: '1. Introduction',
                   content:
-                      'We collect information that you provide directly to us, including:\n\n'
-                      '• Personal information (name, email address, phone number)\n'
-                      '• Educational information (courses, grades, progress)\n'
-                      '• Account credentials\n'
-                      '• Profile information and preferences\n'
-                      '• Communication and interaction data',
+                      'AI Learn NG LMS ("Company", "we", "our", or "us") operates as an online learning platform. '
+                      'This Privacy Policy explains how we collect, use, disclose, and otherwise handle personal '
+                      'information when you use our website and services.',
                 ),
 
                 _buildSection(
                   context,
-                  title: '2. How We Use Your Information',
+                  title: '2. Information We Collect',
                   content:
-                      'We use the information we collect to:\n\n'
-                      '• Provide, maintain, and improve our services\n'
-                      '• Process enrollments and track progress\n'
-                      '• Send you course updates and notifications\n'
-                      '• Respond to your comments and questions\n'
-                      '• Protect against fraudulent or illegal activity\n'
-                      '• Comply with legal obligations',
+                      'We collect information in various ways:\n\n'
+                      '• Personal Information: When you create an account, we collect your name, email address, '
+                      'password, and profile information.\n'
+                      '• Usage Data: We automatically collect information about how you interact with our platform, '
+                      'including courses viewed and progress made.\n'
+                      '• Device Information: We collect information about your device, including IP address, '
+                      'browser type, and operating system.',
                 ),
 
                 _buildSection(
                   context,
-                  title: '3. Information Sharing',
+                  title: '3. How We Use Your Information',
                   content:
-                      'We do not sell your personal information. We may share your information:\n\n'
-                      '• With instructors for enrolled courses\n'
-                      '• With service providers who assist our operations\n'
-                      '• When required by law or to protect rights\n'
-                      '• With your consent or at your direction',
+                      'We use the information we collect for:\n\n'
+                      '• Creating and maintaining your account\n'
+                      '• Delivering and improving our services\n'
+                      '• Personalizing your learning experience\n'
+                      '• Sending you educational content and updates\n'
+                      '• Responding to your inquiries\n'
+                      '• Complying with legal obligations',
                 ),
 
                 _buildSection(
                   context,
                   title: '4. Data Security',
                   content:
-                      'We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.',
+                      'We implement appropriate technical and organizational measures to protect your personal '
+                      'information against unauthorized access, alteration, disclosure, or destruction. '
+                      'However, no method of transmission over the Internet is 100% secure.',
                 ),
 
                 _buildSection(
                   context,
-                  title: '5. Your Rights',
+                  title: '5. Third-Party Sharing',
+                  content:
+                      'We do not sell, trade, or rent your personal information to third parties. We may share '
+                      'information with service providers who assist us in operating our website and conducting '
+                      'our business, under strict confidentiality agreements.',
+                ),
+
+                _buildSection(
+                  context,
+                  title: '6. Cookies',
+                  content:
+                      'Our website uses cookies to enhance your experience. You can choose to disable cookies '
+                      'through your browser settings, though this may limit your ability to use certain features.',
+                ),
+
+                _buildSection(
+                  context,
+                  title: '7. Your Rights',
                   content:
                       'You have the right to:\n\n'
                       '• Access your personal information\n'
-                      '• Correct inaccurate data\n'
+                      '• Correct inaccurate information\n'
                       '• Request deletion of your data\n'
-                      '• Object to processing of your data\n'
-                      '• Export your data\n'
-                      '• Withdraw consent',
-                ),
-
-                _buildSection(
-                  context,
-                  title: '6. Cookies and Tracking',
-                  content:
-                      'We use cookies and similar tracking technologies to track activity on our service and hold certain information. You can instruct your browser to refuse all cookies or indicate when a cookie is being sent.',
-                ),
-
-                _buildSection(
-                  context,
-                  title: '7. Children\'s Privacy',
-                  content:
-                      'Our service is not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13.',
+                      '• Opt-out of marketing communications',
                 ),
 
                 _buildSection(
                   context,
                   title: '8. Changes to This Policy',
                   content:
-                      'We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.',
+                      'We reserve the right to modify this Privacy Policy at any time. Changes will be effective '
+                      'immediately upon posting to the website. Your continued use of the platform following the '
+                      'posting of revised Privacy Policy means you accept and agree to the changes.',
                 ),
 
                 _buildSection(
                   context,
                   title: '9. Contact Us',
                   content:
-                      'If you have any questions about this Privacy Policy, please contact us:\n\n'
-                      'Email: privacy@ngtech.com\n'
-                      'Phone: +1 (555) 123-4567\n'
-                      'Address: 123 Education St, Learning City, LC 12345',
+                      'If you have questions about this Privacy Policy, please contact us:\n\n'
+                      'Email: info@aiudaanbootcamp.com\n'
+                      'Address: Buddha Institute of Technology, Gaya Ji, Bihar, India',
                 ),
 
                 const SizedBox(height: 32),

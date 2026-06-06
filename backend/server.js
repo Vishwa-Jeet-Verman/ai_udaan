@@ -101,7 +101,7 @@ app.use('/api/payments', paymentRoutes);
 
 // ─── Socket.io setup ─────────────────────────────────────────────────────────
 const io = new Server(httpServer, {
-    // ✅ CORS Configuration: Allow Flutter and web clients
+    // ✅ CORS Configuration: reads from CORS_ORIGIN env var in production
     cors: {
         origin: process.env.CORS_ORIGIN && process.env.CORS_ORIGIN !== '*'
             ? process.env.CORS_ORIGIN.split(',').map(o => o.trim())
@@ -231,5 +231,31 @@ const startServer = async () => {
 };
 
 startServer();
+
+// ─── Graceful shutdown ────────────────────────────────────────────────────────
+const shutdown = (signal) => {
+    console.log(`\n[Server] ${signal} received — shutting down gracefully...`);
+    httpServer.close(() => {
+        console.log('[Server] HTTP server closed.');
+        process.exit(0);
+    });
+    // Force exit after 10s if connections don't drain
+    setTimeout(() => {
+        console.error('[Server] Forced exit after timeout.');
+        process.exit(1);
+    }, 10000);
+};
+
+process.on('SIGTERM', () => shutdown('SIGTERM'));
+process.on('SIGINT', () => shutdown('SIGINT'));
+
+process.on('uncaughtException', (err) => {
+    console.error('[Server] Uncaught Exception:', err);
+    shutdown('uncaughtException');
+});
+
+process.on('unhandledRejection', (reason) => {
+    console.error('[Server] Unhandled Rejection:', reason);
+});
 
 module.exports = { app, httpServer };

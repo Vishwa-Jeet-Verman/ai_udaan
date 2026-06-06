@@ -197,7 +197,7 @@ class SettingsScreen extends StatelessWidget {
                     child: Container(
                       padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
                       decoration: BoxDecoration(
-                        color: isSelected ? AppTheme.primaryColor.withOpacity(0.1) : null,
+                        color: isSelected ? AppTheme.primaryColor.withValues(alpha: 0.1) : null,
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Row(
