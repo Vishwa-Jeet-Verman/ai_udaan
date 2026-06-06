@@ -801,7 +801,7 @@ class MoodleService {
         const thumbnail = this.appendTokenToUrl(rawThumbnail);
 
         // Local fallback images keyed by title keywords (used when Moodle image is unavailable)
-        const baseUrl = process.env.BASE_URL || 'http://localhost:9000';
+        const baseUrl = process.env.BASE_URL || 'https://backend.aiudaanbootcamp.com';
         const localFallbacks = [
             { keywords: ['gen', 'generative'], file: 'gen_ai.png' },
             { keywords: ['deep', 'learning'], file: 'deep_learning.png' },
